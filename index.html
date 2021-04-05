@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Multi Channel Demo</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+    <h1>
+        Multi-Channel Demo<br><small>Powered by Agora.io</small>
+    </h1>
+    <p>Agora App ID: <input type="text" id="app-id" value=""></p>
+    <p id='error'></p>
+    <div style="display:flex">
+        <div class="full">
+            <h4 class="full">Channel One (Host)</h4>
+            <p>Channel: <input type="text" id="channel1" value=""></p>
+            <p>Token: <input type="text" id="token1" placeholder="(optional)" value=""></p>
+            <div class="btn-container">
+                <button id="start1">Start</button>
+                <button id="stop1" disabled>Stop</button>
+            </div>
+        </div>
+        <div class="full">
+            <h4 class="full">Channel Two (Audience)</h4>
+            <p>Channel: <input type="text" id="channel2" value=""></p>
+            <p>Token: <input type="text" id="token2" placeholder="(optional)" value=""></p>
+            <div class="btn-container">
+                <button id="start2">Start</button>
+                <button id="stop2" disabled>Stop</button>
+            </div>
+        </div>
+    </div>
+    <div id="remote-container-main">
+        <div class="full">
+            <h4>My Feed:</h4>
+            <div id="me"></div>
+            <h4 class="full">Remote Feeds:</h4>
+            <div id="remote-container1"></div>
+        </div>
+        <div class="full">
+            <h4>Remote Feeds</h4>
+            <div id="remote-container2"></div>
+        </div>
+    </div>
+    <script src="https://download.agora.io/sdk/release/AgoraRTC_N-4.3.0.js"></script>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>
