@@ -27,6 +27,7 @@ document.getElementById("start1").onclick = async function () {
         if (mediaType === "video") {
             let remoteContainer = document.getElementById("remote-container1");
             addVideoContainer(String(user.uid), remoteContainer) // uses helper method to add a container for the videoTrack
+            console.log('clientone: uid, container', user.uid, remoteContainer);
             user.videoTrack.play(String(user.uid));
         }
         if (mediaType === "audio") {
@@ -66,8 +67,10 @@ document.getElementById("start2").onclick = async function () {
         await clientTwo.subscribe(user, mediaType); 
         if (mediaType === "video") {
             let remoteContainer2 = document.getElementById("remote-container2");
-            addVideoContainer(String(user.uid), remoteContainer2)
-            user.videoTrack.play(String(user.uid));
+            // Append '-c2' to the div to avoid possible id conflict when joining the same channel
+            addVideoContainer(String(user.uid + '-c2'), remoteContainer2)
+            console.log('clienttwo: uid, container', user.uid, remoteContainer2);
+            user.videoTrack.play(String(user.uid + '-c2'));
         }
         if (mediaType === "audio") {
             user.audioTrack.play(); // audio does not need a DOM element
@@ -75,7 +78,7 @@ document.getElementById("start2").onclick = async function () {
     });
     clientTwo.on("user-unpublished", async (user, mediaType) => {
         if (mediaType === "video") {
-            removeVideoContainer(user.uid) // removes the injected container
+            removeVideoContainer(user.uid+ '-c2') // removes the injected container
         }
     });
     // Join a channnel and retrieve the uid for local user
@@ -109,7 +112,7 @@ function initStopTwo(client) {
     stopBtn.onclick = function () {
         client.remoteUsers.forEach(user => {
             if (user.hasVideo) {
-                removeVideoContainer(user.uid)
+                removeVideoContainer(user.uid + '-c2')
             }
             client.unsubscribe(user);
         });
