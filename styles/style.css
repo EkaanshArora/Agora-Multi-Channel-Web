@@ -27,7 +27,7 @@ input:focus {
     outline: 0px;
     border-bottom: #0c9efd 2px solid;
 }
-#remote-container video {
+#remote-container1 video {
     height: auto;
     position: relative !important;
 }
@@ -47,7 +47,7 @@ input:focus {
 #remote-container-main {
     display: flex;
 }
-#remote-container {
+#remote-container1 {
     flex: 1;
     display: flex;
 }
